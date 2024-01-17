@@ -1,0 +1,164 @@
+body {
+    margin: 0; 
+    padding: 0px; 
+    background-color: #bf7fc5;
+    color: #6e28d9;  
+    text-align: center;
+    font-family: "Arial", sans-serif;
+    overflow-x: hidden;
+  }
+  
+  /*img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 168px;
+    height: 112px;
+    border-radius: 70%;
+    opacity: 0.8;
+  }*/
+    
+  .homePage {
+      margin: 0; 
+      padding: 0px;
+      background-image: url('../image/yiddyheader.jpg');
+      background-size: cover; 
+      background-position: top; 
+      background-repeat: no-repeat; 
+      color: #6e28d9;
+      text-align: center;
+      font-family: "Arial", sans-serif;
+  }
+    
+    /* Style for the first header */
+    header.TitleHeader {
+      padding: 0px;
+      text-align: center;
+      margin-top: 5vh;
+      font-size: 40px;
+  }
+
+    header.CityHeader {
+      text-align: center;
+      font-size: 24px;
+      margin-top: 65px;
+      text-decoration: underline;
+  }
+    
+    /* Style for the signup and login links */
+    header.AuthenticationLinks {
+      padding: 10px;
+      margin-right: 20px;
+      text-align: center;
+      height: 100vh;
+  }
+  
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 168px;
+      height: 112px;
+      border-radius: 70%;
+      opacity: 0.8;
+  }
+
+    .MainForm {
+        display: flex;
+        flex-direction: row;
+        align-items: center; 
+        width: 500px;
+        margin: 0 auto;
+        padding: 20px;
+  }
+    
+    .MainForm input[type="text"] {
+        width: calc(100% - 10px); 
+        height: 36px;
+        font-size: 16px;
+        
+  }
+
+    .MainForm button {
+        margin-left: 10px; 
+  }
+
+    a.first-link {
+        margin-right: 10px; 
+  }
+    
+  .specialUl {
+      list-style: none;
+      padding: 0;
+      width: 300px; 
+      margin: 10px; 
+      padding: 10px; 
+      border: 2px solid #000000; 
+      border-radius: 8px;
+      text-transform: capitalize;
+      display: inline-block;
+      box-sizing: border-box;
+
+  }
+
+  .SearchForm {
+    margin-top: 30px;
+  }
+
+  .container {
+    max-width: 1500px;
+    margin: 10px auto;
+  }
+
+  .LoginContainer {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    }
+
+    .TextUnderImage {
+      display: block;
+      margin-top: 5px;
+      color: #000000;
+      
+      
+    }
+
+  .Log {
+    width: 50px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .popup {
+      margin-right: 10px; 
+      position: relative; 
+  }
+  
+  .popup-content {
+      display: none;
+      position: absolute;
+      top: 100%; 
+      right: 0; 
+      background-color: #f9f9f9;
+      min-width: 160px;
+      box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+      z-index: 1;
+  }
+  
+  .popup-content a {
+      color: black;
+      padding: 12px 16px;
+      text-decoration: none;
+      display: block;
+  }
+  
+  .popup-content a:hover {
+      background-color: #ddd;
+  }
+  
+  .popup:hover .popup-content {
+      display: block;
+  }

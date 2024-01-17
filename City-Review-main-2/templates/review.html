@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Document</title>
+</head>
+<body>
+    <a href="{{url_for('home')}}"> 
+        <img src="{{ url_for('static', filename='image/fullsizelogo.jpg') }}" alt="Logo" class="logo">
+    </a>
+    <h1>Review for {{ selected_city_name }}</h1>
+
+    <form method="POST" action="{{url_for('submit_review')}}" class="SearchForm">
+        <label for="safety">Safety (1-5):</label>
+        <input type="number" name="safety" min="1" max="5" required>
+
+        <label for="transportation">Transportation (1-5):</label>
+        <input type="number" name="transportation" min="1" max="5" required>
+
+        <label for="dining">Dining (1-5):</label>
+        <input type="number" name="dining" min="1" max="5" required>
+
+        <label for="attractions">Attractions (1-5):</label>
+        <input type="number" name="attractions" min="1" max="5" required>
+
+        <label for="weather">Weather (1-5):</label>
+        <input type="number" name="weather" min="1" max="5" required>
+
+        <label for="social">Social Life (1-5):</label>
+        <input type="number" name="social" min="1" max="5" required>
+
+        <label for="affordability">Affordability (1-5):</label>
+        <input type="number" name="affordability" min="1" max="5" required>
+
+        <label for="review">Description:</label>
+        <textarea name="review" rows="4" required></textarea>
+
+        <button type="submit">Submit Review</button>
+    </form>
+
+</body>
+</html>

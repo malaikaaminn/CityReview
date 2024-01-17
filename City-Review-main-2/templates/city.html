@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>City</title>
+</head>
+
+<body>
+    <a href="{{url_for('home')}}"> 
+        <img src="{{ url_for('static', filename='image/fullsizelogo.jpg') }}" alt="Logo" class="logo">
+    </a>
+    
+    <h1>{{ selected_city.name }}</h1>
+    <a href="{{url_for('review')}}">Review This City</a>
+    <h2>Average Review Score</h2>
+    <h3> <span style="text-decoration: underline;">Safety:</span> {{selected_city.avg_safety or NULL}}</h3>
+    <h3> <span style="text-decoration: underline;">Transportation:</span> {{selected_city.avg_transportation or NULL}}</h3>
+    <h3> <span style="text-decoration: underline;">Attractions:</span> {{selected_city.avg_attractions or NULL}}</h3>
+    <h3> <span style="text-decoration: underline;">Dining:</span> {{selected_city.avg_dining or NULL}}</h3>
+    <h3> <span style="text-decoration: underline;">Social:</span> {{selected_city.avg_social or NULL}}</h3>
+    <h3> <span style="text-decoration: underline;">Affordability:</span> {{selected_city.avg_affordability or NULL}}</h3>
+    <h3> <span style="text-decoration: underline;">Weather:</span> {{selected_city.avg_weather or NULL}}</h3>
+
+    {% if selected_city.ratings %}
+    <header class="CityHeader">
+        <h4>User Reviews </h4>
+    </header>
+    <div class="container">
+    {% for rating in selected_city.ratings %}
+        {% if rating is mapping %}
+            <ul class="specialUl">
+                {% for key, value in rating.items() %}
+                    <li>{{ key }}: {{ value }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    {% endfor %}
+{% else %}
+    <p>No ratings available for this city. Be the first to write a review!</p>
+{% endif %}
+</div>
+
+
+<a href="{{url_for('review')}}">Review This City</a>
+</body>
+
+</html>

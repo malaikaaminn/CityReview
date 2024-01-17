@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/style.css')}}">
+    <title>Yiddy</title>
+</head>
+<body class="homePage">
+
+    <div class="LoginContainer">
+        <div class="popup">
+            <a id="loginLink" onclick="togglePopup()"> 
+                <img src="{{ url_for('static', filename='image/Login.png') }}" alt="Login" class="Log">
+            </a>
+            <p class="TextUnderImage" id="username">{{ username }}</p>
+            <div class="popup-content" id="popupMenu">
+                <a href="{{ url_for('login') }}">Sign In</a>
+                <a href="{{ url_for('logout') }}">Sign Out</a>
+            </div>
+        </div>
+    </div>
+
+<!-- Search Form -->
+<form action="/search" method="post" class="MainForm">
+    <input type="text" name="searchInput" id="searchInput" list="citiesList" placeholder="Search for a city...">
+    <datalist id="citiesList">
+        <!-- City names will be dynamically populated here -->
+    </datalist>
+    <button type="submit">Search</button>
+</form>
+
+<!-- Display Results -->
+<ul id="searchResults"></ul>
+<script>
+    // Fetch and populate the datalist with city names
+    fetch('/all_cities')
+        .then(response => response.json())
+        .then(cityNames => {
+            var datalist = document.getElementById('citiesList');
+            cityNames.forEach(city => {
+                var option = document.createElement('option');
+                option.value = city;
+                datalist.appendChild(option);
+            });
+        })
+        .catch(error => console.error('Error fetching city names:', error));
+
+    // Function to handle dynamic search
+    function searchCities() {
+        var searchQuery = document.getElementById("searchInput").value;
+
+        // Make AJAX request to the server
+        fetch('/search', {
+            method: 'POST',
+            body: new URLSearchParams({ 'searchInput': searchQuery }),
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            }
+        })
+        .then(response => response.json())
+        .then(results => displayResults(results))
+        .catch(error => console.error('Error:', error));
+    }
+
+    /// Function to toggle the visibility of the popup menu
+    function togglePopup() {
+        var popupMenu = document.getElementById('popupMenu');
+        popupMenu.classList.toggle('show');
+    }
+
+    // Close the popup menu if the user clicks outside of it
+    window.onclick = function(event) {
+        var popupMenu = document.getElementById('popupMenu');
+        var loginLink = document.getElementById('loginLink');
+        if (!event.target.matches('#popupMenu') && !event.target.matches('#loginLink')) {
+            popupMenu.classList.remove('show');
+        }
+    }
+</script>
+
+</body>
+</html>
